@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blur Image on Button Click</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .avatar {
+          vertical-align: middle;
+          width: 100px;
+          height: 100px;
+          border-radius: 2000%;
+        }
+        .card {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: filter 0.3s ease-in-out;
+        }
+
+        .card img.blurred {
+            filter: blur(5px);
+        }
+
+        .card img.black-white {
+            filter: grayscale(100%);
+        }
+
+        .card img.brightened {
+            filter: brightness(150%); /* Initial brightness */
+        }
+
+        .btn-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            width: 100px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+         .reddish-effect {
+            filter: hue-rotate(20deg); /* Adjust the degree of rotation for desired reddish effect */
+        }
+        .greenish-effect {
+            filter: hue-rotate(90deg); /* Adjust the degree of rotation for desired greenish effect */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+          <h1><center>IMAGE PROCESSING</center></h1>
+
+        <img id="mainImage" src="myimg.jpg" alt="Main Image" >
+        <img id="duplicatedImage" src="" alt="dup Image" hidden>
+
+        <div class="btn-container">
+           <table>
+               <tr>
+                   <td><button id="blurBtn" class="btn">Blur Image</button></td>
+                   <td><button id="bwBtn" class="btn">Black & White</button></td>
+                   <td><button id="checkColorBtn" class="btn">Color Bias</button></td>
+               </tr>
+               <tr>
+                   <td><button id="increaseBrightnessBtn" class="btn">Increase Brightness</button></td>
+                   <td><button id="decreaseBrightnessBtn" class="btn">Decrease Brightness</button></td>
+                   <td>
+                    <button id="makeReddishBtn" class="btn">Make Reddish</button>
+                    </td>
+               </tr>
+                  <tr>
+                   <td><button id="makeGreenish" class="btn" >Make Greenish</button></td>
+                   <td><button  class="btn" onclick="duplicateImage()">Duplicate Image</button></td>
+                   <td>    <button  class="btn" onclick="reduceResolution()"> Decrease Resolution</button>
+                    </td>
+               </tr>
+                <tr>
+                    <td>    
+                    <button  class="btn" onclick="avatar()">Avatar</button>
+                    </td>
+                    <td>    
+                    <button  id="reload" class="btn" onclick="avatar()">Reset</button>
+                    </td>
+                    <td>    
+                    <button id="goToindex" class="btn" onclick="avatar()">Back</button>
+                    
+                    </td>
+               </tr>
+           </table>
+        </div>
+        
+    </div>
+
+    <script>
+        document.getElementById('blurBtn').addEventListener('click', function() {
+            document.getElementById('mainImage').classList.toggle('blurred');
+        });
+
+        document.getElementById('bwBtn').addEventListener('click', function() {
+            document.getElementById('mainImage').classList.toggle('black-white');
+        });
+
+        document.getElementById('increaseBrightnessBtn').addEventListener('click', function() {
+            document.getElementById('mainImage').classList.add('brightened');
+        });
+
+        document.getElementById('decreaseBrightnessBtn').addEventListener('click', function() {
+            document.getElementById('mainImage').classList.remove('brightened');
+        });
+        document.getElementById('checkColorBtn').addEventListener('click', function() {
+            alert("Image is blueish");
+        });
+        document.getElementById('makeReddishBtn').addEventListener('click', function() {
+            document.getElementById('mainImage').classList.toggle('reddish-effect');
+        });
+        document.getElementById('makeGreenish').addEventListener('click', function() {
+            document.getElementById('mainImage').classList.toggle('greenish-effect');
+        });
+        function duplicateImage() {
+            var originalImage = document.getElementById('mainImage');
+            var duplicatedImage = document.getElementById('duplicatedImage');
+            var newImage = new Image();
+            newImage.src = originalImage.src;
+            newImage.alt = originalImage.alt;
+            duplicatedImage.parentNode.replaceChild(newImage, duplicatedImage);
+            newImage.hidden=false;
+        }
+        function avatar() {
+            var originalImage = document.getElementById('mainImage');
+            
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+    const goToPageBtn = document.getElementById("goToindex");
+
+    goToPageBtn.addEventListener("click", function () {
+        // Change "page.html" to the URL of the page you want to navigate to
+        window.location.href = "index.html";
+    });
+});
+        document.addEventListener("DOMContentLoaded", function () {
+    const goToPageBtn = document.getElementById("reload");
+
+    goToPageBtn.addEventListener("click", function () {
+        // Change "page.html" to the URL of the page you want to navigate to
+        window.location.href = "imgprocessing.html";
+    });
+});
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
